@@ -11,8 +11,9 @@ Takes the following inputs:
   * BPMs - Takes a vector of these, so add or subtract as needed
   * X Positions - Takes a vector
   * Y Positions - Takes a vector
+
     
-Two objects exist within spotsize.C currently:
+Below are the objects within spotsize.C
 
 spotsize_grid
   * Takes a bpm, XPos, and YPos and plots the bpm's result at each coordinate combination
