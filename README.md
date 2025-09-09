@@ -1,10 +1,10 @@
-#Data Analysis Repository
+# Data Analysis Repository
 
 This repository should be where we place analysis scripts we create & use for our data analysis
 
 Add any scripts you create to this README as you go
 
-#spotsize.C
+# spotsize.C
 Used to analyze data from beam spot-size studies
 Takes the following inputs:
   * Run number - Currently just one at a time
@@ -15,8 +15,11 @@ Takes the following inputs:
     
 Below are the objects within spotsize.C
 
-spotsize_grid
-  * Takes a bpm, XPos, and YPos and plots the bpm's result at each coordinate combination
+### spotsize_grid
+Takes a bpm, XPos, and YPos, and plots the bpm's result at each coordinate combination
+  * Plots are output as root files
     
-spotsize_fit
-  * Plots the change in the bpm as a function of either XPos or YPos
+### spotsize_fit
+Plots the change in the bpm as a function of either XPos or YPos
+  * Plots are output as root files
+  * The data needs to be fit separately at the moment. Looking into changing this
