@@ -49,7 +49,10 @@ void spotsize_grid(int run_num) {
 
         const char* currentDir = gSystem->pwd();
         std::string fullPath = std::string(currentDir) + "/" + "plots/spotsize";
-        std::string filePath = fullPath + Form("/%s_X%d_Y%d.root",bpm[i].Data(),xpos[j],ypos[k]);
+        std::string filePath = fullPath + Form("/%s_X%d_Y%d.png",bpm[i].Data(),xpos[j],ypos[k]);
+        TH2F *htemp = (TH2F*)gPad->GetPrimitive("htemp");
+        htemp->GetXaxis()->SetTitle("Dx [um]");
+        htemp->GetYaxis()->SetTitle("Counts");
         c1->SaveAs(filePath.c_str());
         delete c1;
 
@@ -94,7 +97,10 @@ void spotsize_fit(int run_num) {
       
       const char* currentDir = gSystem->pwd();
       std::string fullPath = std::string(currentDir) + "/" + "plots/spotsize";
-      std::string filePath = fullPath + Form("/Fit_%s_X%d.root",bpm[i].Data(),xpos[j]);
+      std::string filePath = fullPath + Form("/Fit_%s_X%d.png",bpm[i].Data(),xpos[j]);
+      TH2F *htemp = (TH2F*)gPad->GetPrimitive("htemp");
+      htemp->GetXaxis()->SetTitle("Y Position");
+      htemp->GetYaxis()->SetTitle("Dx [um]");
       c1->SaveAs(filePath.c_str());
       delete c1;
 
@@ -106,7 +112,10 @@ void spotsize_fit(int run_num) {
 
       const char* currentDir = gSystem->pwd();
       std::string fullPath = std::string(currentDir) + "/" + "plots/spotsize";
-      std::string filePath = fullPath + Form("/Fit_%s_Y%d.root",bpm[i].Data(),ypos[j]);
+      std::string filePath = fullPath + Form("/Fit_%s_Y%d.png",bpm[i].Data(),ypos[j]);
+      TH2F *htemp = (TH2F*)gPad->GetPrimitive("htemp");
+      htemp->GetXaxis()->SetTitle("X Position");
+      htemp->GetYaxis()->SetTitle("Dx [um]");
       c1->SaveAs(filePath.c_str());
       delete c1;
 
