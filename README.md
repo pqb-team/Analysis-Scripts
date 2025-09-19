@@ -23,7 +23,7 @@ Plots the change in the bpm as a function of either XPos or YPos
 
 
 
-#simple_phase.C
+# simple_phase.C
 Used to generate sinusoidal fits of bpm & magnet data and extract phase/frequency/amplitude information. Takes the following inputs:
   * Run number - The run you wish to analyze
   * event min/max - The range of events you wish to analyze
