@@ -89,10 +89,10 @@ void phase_fit(int run_num, int event_min, int event_max,  string type, string n
     }
   }
   else if (type == "bpm") {
-    fit->SetParameter(0, 0.1);                       // Amplitude guess
-    fit->FixParameter(1, fit->GetParameter(1));  // Angular frequency guess (2π*f)
-    fit->SetParameter(2, 0.0);                       // Phase guess
-    fit->SetParameter(3, 0.15);                      // Offset guess
+    fit->SetParameter(0, 0.1);      // Amplitude guess
+    fit->FixParameter(1, 0.399);    // Angular frequency guess (2π*f)
+    fit->SetParameter(2, 0.0);      // Phase guess
+    fit->SetParameter(3, 0.15);     // Offset guess
   }
   else {
     std::cout << "Error: type not valid" << std::endl;
