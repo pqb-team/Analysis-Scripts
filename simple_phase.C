@@ -14,6 +14,7 @@ using namespace std;
 vector<double> phase_fit(int run_num, int event_min, int event_max, string type, string name, string cut);
 
 
+
 //This function takes the following info and performs a sinusoidal fit: Run #, the event range (min/max), the type of object (currently magnet/bpm), and the specific name (of said magnet/bpm)
 void simple_phase(int run_num, int event_min, int event_max, string type, string name, string cut) {
 
@@ -51,8 +52,6 @@ void simple_phase(){
 
 }
 
-
-
 vector<double> phase_fit(int run_num, int event_min, int event_max,  string type, string name, string cut) {
 
   TFile *f = new TFile(Form("/chafs2/work1/parity/japanOutput/sbs_CntHouse_%d.root",run_num),"READ"); //Loading the root file
@@ -62,7 +61,7 @@ vector<double> phase_fit(int run_num, int event_min, int event_max,  string type
 
   TTree *t = (TTree*)f->Get("evt"); //Loading the "evt" TTree
   if (!t) {
-    std::cout << "Error: TTree not found!" << std::endl;
+    cout << "Error: TTree not found!" << endl;
   }
 
   //Draws the desired data from the TTree and moves it to a histogram for fitting
@@ -81,7 +80,7 @@ vector<double> phase_fit(int run_num, int event_min, int event_max,  string type
     }
     else {
       fit->SetParameter(0, 10000);  // Amplitude guess
-      fit->FixParameter(1, 1508.0);  // Angular frequency guess (2π*f). Used to be 0.399
+      fit->FixParameter(1, 1508.0); // Angular frequency guess (2π*f). Used to be 0.399
       fit->SetParameter(2, 0.0);    // Phase guess
       fit->SetParameter(3, 150);    // Offset guess
     }
@@ -93,11 +92,12 @@ vector<double> phase_fit(int run_num, int event_min, int event_max,  string type
     fit->SetParameter(3, 0.15);     // Offset guess
   }
   else {
-    std::cout << "Error: type not valid" << std::endl;
+    cout << "Error: type not valid" << endl;
   }
   h->Fit("fit", "QN0"); //Applying the fit
-  //h->SaveAs("name.png");
-  //Filling params with the fit parameters for use outside this function
+  //h->SaveAs("image.extension");
+
+  //Storing the fit parameters for later use
   vector<double> params;
   for (int i = 0; i < 4; i++) {
     params.push_back(fit->GetParameter(i));
